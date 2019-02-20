@@ -19,6 +19,13 @@
 						</ol>
 					</nav>
 				</div>
+				<div class="col-md-6 col-sm-12 text-right">
+					<div class="dropdown">
+						<a class="btn btn-primary " href="{{ url()->previous() }}" role="button" >
+							Back
+						</a>
+					</div>
+				</div>
 			</div>
 		</div>
 		<!-- <div class="pd-20 bg-white border-radius-4 box-shadow mb-30"> -->

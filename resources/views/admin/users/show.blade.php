@@ -21,62 +21,135 @@
 			</div>
 		</div>
 		<div class="pd-20 bg-white border-radius-4 box-shadow mb-30">
-			{!! Former::open()->method('PATCH')->action(route('users.update',$user->id)) !!} 
-			<div class="form-group">
-			</div>
-			{!! Former::input('first_name')->class('form-control')->value($user->first_name) !!}
-			{!! Former::input('last_name')->class('form-control') !!}
-			{!! Former::input('email')->class('form-control') !!}
-			{!! Former::input('phone')->class('form-control') !!}
-			<label>Photo</label>
-			<img src="{!! asset('/uploads/photo/'.$user_profile->photo) !!}" style="height: 50px; width: 50px;" alt="">
-			{!! Former::input('mobile')->class('form-control')->value($user_profile->mobile) !!}
-			<div class="form-group row">
-				<label class="col-sm-12 col-md-2 col-form-label">Gender</label>
-				<div class="col-sm-12 col-md-10">
-					<input type="radio" name="gender" checked value="male">Male
-					<input type="radio" name="gender" value="female">Female
-				</div>
-			</div>
-			<div class="form-group row ">
-				<label class="col-sm-12 col-md-2 col-form-label">Blogs</label>
-				<table class="data-table " border="1">
-					<th>Id</th>
-					<th>Name</th>
-					<th>Actions</th>
-					<tbody>
-						@foreach($blogs as $blog)
-						<tr>
-							<td>{!! $blog->id !!}</td>
-							<td>{!! $blog->name !!}</td>
-							<td>
-								<a class="dropdown-item" href="{!! route('blogs.show',['id'=>$blog->id]) !!}" title="">show</a>
-							</td>
-						</tr>
-						@endforeach
-					</tbody>
-				</table>
-			</div>
-			{!! Former::input('marrital_status')->class('form-control')->value($user_profile->marrital_status) !!}
-			{!! Former::input('designation')->class('form-control')->value($user->designations->name) !!}
-			{!! Former::input('department')->class('form-control')->value($user->departments->name) !!}
-			{!! Former::textarea('address1')->class('form-control')->value($user_profile->address1) !!}
-			{!! Former::textarea('address2')->class('form-control')->value($user_profile->address2) !!}
-			{!! Former::input('city')->class('form-control')->value($user_profile->city) !!}
-			{!! Former::input('state')->class('form-control')->value($user_profile->state) !!}
-			{!! Former::input('country')->class('form-control')->value($user_profile->country) !!}
-			{!! Former::input('zipcode')->class('form-control')->value($user_profile->zipcode) !!}
-			{!! Former::date('dob')->class('form-control')->value($user_profile->dob) !!}
-			{!! Former::input('pan_number')->class('form-control')->value($user_profile->pan_number) !!}
-			{!! Former::input('management_level')->class('form-control')->value($user_profile->management_level) !!}
-			{!! Former::date('join_date')->class('form-control')->value($user_profile->join_date) !!}
-			{!! Former::input('google')->class('form-control')->value($user_profile->google) !!}
-			{!! Former::input('facebook')->class('form-control')->value($user_profile->facebook) !!}
-			{!! Former::input('website')->class('form-control')->value($user_profile->website) !!}
-			{!! Former::input('skype')->class('form-control')->value($user_profile->skype) !!}
-			{!! Former::input('linkedin')->class('form-control')->value($user_profile->linkedin) !!}
-			{!! Former::input('twitter')->class('form-control')->value($user_profile->twitter) !!}
-			{!! Former::close() !!}
+			<table class="table">
+				<tbody>
+					<tr>
+						<td>First_name </td>
+						<td>{!! $user->first_name !!}</td>
+					</tr>
+					<tr>
+						<td>Last_name </td>
+						<td>{!! $user->last_name !!}</td>
+					</tr>
+					<tr>
+						<td>Email </td>
+						<td>{!! $user->email !!}</td>
+					</tr>
+					<tr>
+						<td>Phone </td>
+						<td>{!! $user->phone !!}</td>
+					</tr>
+					<tr>
+						<td>Mobile </td>
+						<td>{!! $user_profile->mobile !!}</td>
+					</tr>
+					<tr>
+						<td>Photo </td>
+						<td><img src="{!! $user_profile->profile_photo_url() !!}" style="height: 50px; width: 50px;" alt=""></td>
+					</tr>
+					<tr>
+						<td>Gender </td>
+						<td>{!! $user_profile->gender !!}</td>
+					</tr>
+					<tr>
+						<td>Marrital_status </td>
+						<td>{!! $user_profile->marrital_status !!}</td>
+					</tr>
+					<tr>
+						<td>Designations </td>
+						<td>{!! $user->designations->name !!}</td>
+					</tr>
+					<tr>
+						<td>Departments </td>
+						<td>{!! $user->departments->name !!}</td>
+					</tr>
+					<tr>
+						<td>Address1 </td>
+						<td>{!! $user_profile->address1 !!}</td>
+					</tr>
+					<tr>
+						<td>Address2 </td>
+						<td>{!! $user_profile->address2 !!}</td>
+					</tr>
+					<tr>
+						<td>City </td>
+						<td>{!! $user_profile->city !!}</td>
+					</tr>
+					<tr>
+						<td>State </td>
+						<td>{!! $user_profile->state !!}</td>
+					</tr>
+					<tr>
+						<td>Country </td>
+						<td>{!! $user_profile->country !!}</td>
+					</tr>
+					<tr>
+						<td>Zipcode </td>
+						<td>{!! $user_profile->zipcode !!}</td>
+					</tr>
+					<tr>
+						<td>Dob </td>
+						<td>{!! $user_profile->dob !!}</td>
+					</tr>
+					<tr>
+						<td>Pan_number </td>
+						<td>{!! $user_profile->pan_number !!}</td>
+					</tr>
+					<tr>
+						<td>Management_level </td>
+						<td>{!! $user_profile->management_level !!}</td>
+					</tr>
+					<tr>
+						<td>Join Date </td>
+						<td>{!! $user_profile->join_date !!}</td>
+					</tr>
+					<tr>
+						<td>Google </td>
+						<td>{!! $user_profile->google !!}</td>
+					</tr>
+					<tr>
+						<td>Facebook </td>
+						<td>{!! $user_profile->facebook !!}</td>
+					</tr>
+					<tr>
+						<td>Website </td>
+						<td>{!! $user_profile->website !!}</td>
+					</tr>
+					<tr>
+						<td>Skype </td>
+						<td>{!! $user_profile->skype !!}</td>
+					</tr>
+					<tr>
+						<td>Linkedin </td>
+						<td>{!! $user_profile->linkedin !!}</td>
+					</tr>
+					<tr>
+						<td>Twitter</td>
+						<td>{!! $user_profile->twitter !!}</td>
+					</tr>
+					
+					<td>Blogs</td>
+					
+						<table class="table" border="1" >
+							<th>Id</th>
+							<th>Name</th>
+							<th>Actions</th>
+							<tbody>
+								@foreach($blogs as $blog)
+								<tr>
+									<td>{!! $blog->id !!}</td>
+									<td>{!! $blog->name !!}</td>
+									<td>
+										<a class="" href="{!! route('blogs.show',['id'=>$blog->id]) !!}" title="">show</a>
+									</td>
+								</tr>
+								@endforeach
+							</tbody>
+						</table>
+					
+					
+				</tbody>
+			</table>
 		</div>
 	</div>
 </div>
