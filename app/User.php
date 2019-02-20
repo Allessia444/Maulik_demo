@@ -41,5 +41,10 @@ class User extends Authenticatable
         
     }
 
+    public function tasks(){
+        return $this->hasone('App\Tasks','user_id');
+        
+    }
+
 
 }

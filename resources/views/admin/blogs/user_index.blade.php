@@ -4,6 +4,13 @@
 
 <div class="pd-ltr-20 customscroll customscroll-10-p height-100-p xs-pd-20-10">
 	<div class="min-height-200px">
+		<div class="col-md-6 col-sm-12 text-right">
+			<div class="dropdown">
+				<a class="btn btn-primary " href="{!! route('blogs.create') !!}" role="button" >
+					Add Blogs
+				</a>
+			</div>
+		</div>
 		<div class="container pd-0">
 			<div class="page-header">
 				<div class="row">
@@ -19,23 +26,17 @@
 						</nav>
 					</div>
 				</div>
-				<div class="col-md-6 col-sm-12 text-right">
-					<div class="dropdown">
-						<a class="btn btn-primary " href="{!! route('blogs.create') !!}" role="button" >
-							Add Blogs
-						</a>
-					</div>
-				</div>
+				
 			</div>
 			<div class="contact-directory-list">
 				<ul class="row">
-				@foreach($blogs as $blog)
+					@foreach($blogs as $blog)
 					<li class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
 						<div class="contact-directory-box">
 							<div class="contact-dire-info text-center">
 								<div class="contact-avatar">
 									<span>
-									<img src="{!! asset('/uploads/blog/'.$blog->photo) !!}" alt="">
+										<img src="{!! asset('/uploads/blog/'.$blog->photo) !!}" alt="">
 									</span>
 								</div>
 								<div class="contact-name">
@@ -53,19 +54,28 @@
 									{!! $blog->description !!}
 								</div>
 							</div>
-							<div class="view-contact">
+							<div class="contact-skill">
+								<a href="{!! route('blogs.user_blog_details',['id'=>$blog->id]) !!}" class="badge badge-pill btn btn-outline-primary">View Profile</a>
+								<a href="{!! route('blogs.edit',['id'=>$blog->id]) !!}" class="badge badge-pill btn btn-outline-primary">Edit</a>
+								<form action="{{route('blogs.destroy',[$blog->id])}}" method="POST">
+									@method('DELETE')
+									@csrf
+									<button class="badge badge-pill btn btn-outline-primary" type="submit">Delete</button>               
+								</form>
+							</div>
+							<!-- <div class="view-contact">
 								<a href="{!! route('blogs.edit',['id'=>$blog->id]) !!}">Edit</a>
 								<a href="{!! route('blogs.user_blog_details',['id'=>$blog->id]) !!}">View Profile</a>
 								<form action="{{route('blogs.destroy',[$blog->id])}}" method="POST">
 									@method('DELETE')
 									@csrf
-									<button  type="submit">Delete</button>               
+									<button class="btn btn-primary" type="submit">Delete</button>               
 								</form>
 								
-							</div>
+							</div> -->
 						</div>
 					</li>
-				@endforeach
+					@endforeach
 				</ul>
 			</div>
 		</div>

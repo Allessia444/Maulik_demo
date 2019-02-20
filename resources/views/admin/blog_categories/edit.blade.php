@@ -28,7 +28,7 @@
 		</div>
 		<div class="pd-20 bg-white border-radius-4 box-shadow mb-30">
 			{!! Former::open()->method('PATCH')->action(route('blogcategories.update',$blog_categories->id)) !!}
-				@csrf
+			@csrf
 			{!! Former::select('parent_id')->class('form-control')->options($parent)->select($blog_categories->parent_id) !!}
 			{!! Former::input('name')->class('form-control') !!}
 			{!! Former::submit('Save')->class('form-group') !!}

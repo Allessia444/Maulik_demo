@@ -21,34 +21,41 @@
 				</div>
 				<div class="col-md-6 col-sm-12 text-right">
 					<div class="dropdown">
-						<a class="btn btn-primary " href="{{ url()->previous() }}" role="button" >
+						@if($key)
+						<a class="btn btn-primary " href="{{ route('users.index') }}" role="button" >
 							Back
 						</a>
+						@else
+						<a class="btn btn-primary " href="{{ route('blogs.index') }}" role="button" >
+							Back
+						</a>
+						@endif
+
 					</div>
 				</div>
 			</div>
 		</div>
 		<!-- <div class="pd-20 bg-white border-radius-4 box-shadow mb-30"> -->
-			<!-- <div class="row"> -->
-				<table class="table">
-					<thead>
-						
-					</thead>
-					<tbody>
-						<tr>
-							<td>Id</td>	<td >{!! $blogs->id !!}</td>
-						</tr>
-						<tr>
-							<td>Blog category</td>	<td>{!! $blogs->blog_category->name !!}</td></tr>
-							<tr><td>Name</td><td>{!! $blogs->name !!}</td></tr>
-							<tr><td>Description</td><td>{!! $blogs->description !!}</td></tr>
-							<tr><td>Author</td><td>{!! $blogs->users->first_name !!}</td></tr>
-							<tr><td>Status</td><td>{!! $blogs->status !!}</td></tr>
-							
-						</tr>
-					</tbody>
-				</table>
-			<!-- </div> -->
+		<!-- <div class="row"> -->
+		<table class="table">
+			<thead>
+				
+			</thead>
+			<tbody>
+				<tr>
+					<td>Id</td>	<td >{!! $blogs->id !!}</td>
+				</tr>
+				<tr>
+					<td>Blog category</td>	<td>{!! $blogs->blog_category->name !!}</td></tr>
+					<tr><td>Name</td><td>{!! $blogs->name !!}</td></tr>
+					<tr><td>Description</td><td>{!! $blogs->description !!}</td></tr>
+					<tr><td>Author</td><td>{!! $blogs->users->first_name !!}</td></tr>
+					<tr><td>Status</td><td>{!! $blogs->status !!}</td></tr>
+					
+				</tr>
+			</tbody>
+		</table>
+		<!-- </div> -->
 		<!-- </div> -->
 		
 	</div>

@@ -130,22 +130,22 @@
 					
 					<td>Blogs</td>
 					
-						<table class="table" border="1" >
-							<th>Id</th>
-							<th>Name</th>
-							<th>Actions</th>
-							<tbody>
-								@foreach($blogs as $blog)
-								<tr>
-									<td>{!! $blog->id !!}</td>
-									<td>{!! $blog->name !!}</td>
-									<td>
-										<a class="" href="{!! route('blogs.show',['id'=>$blog->id]) !!}" title="">show</a>
-									</td>
-								</tr>
-								@endforeach
-							</tbody>
-						</table>
+					<table class="table" border="1" >
+						<th>Id</th>
+						<th>Name</th>
+						<th>Actions</th>
+						<tbody>
+							@foreach($blogs as $blog)
+							<tr>
+								<td>{!! $blog->id !!}</td>
+								<td>{!! $blog->name !!}</td>
+								<td>
+									<a class="" href="{!! route('blogs.show',['id'=>$blog->id,'from'=>'user']) !!}" title="">show</a>
+								</td>
+							</tr>
+							@endforeach
+						</tbody>
+					</table>
 					
 					
 				</tbody>

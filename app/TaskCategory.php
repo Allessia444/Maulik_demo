@@ -12,12 +12,15 @@ class TaskCategory extends Model
 
      use Sluggable;
 
-     public function sluggable()
+    public function sluggable()
     {
         return [
             'slug' => [
                 'source' => 'name'
             ]
         ];
+    }
+    public function tasks(){
+        return $this->hasone('App\Tasks','task_category_id');
     }
 }

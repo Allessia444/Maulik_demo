@@ -9,6 +9,7 @@ use Former;
 use App\Blogs;
 use App\BlogCategory;
 use Auth;
+use Illuminate\Support\Facades\Input;
 class BlogsController extends Controller
 {  
 
@@ -20,14 +21,11 @@ class BlogsController extends Controller
             $blogs=Blogs::all();
             return view('admin.blogs.admin_index',compact('blogs'));            
         }
-        elseif (Auth::user()->role=="user") {
+        else{
             $blogs=Blogs::where('user_id','=',Auth::user()->id)->get();
             return view('admin.blogs.user_index',compact('blogs'));               
         }
-        else{
-            $blogs=Blogs::all();
-            return view('admin.blogs.index',compact('blogs'));                  
-        }
+        
         
     }
 
@@ -86,10 +84,9 @@ class BlogsController extends Controller
     //Show Admin blog details
     public function show($id)
     {
-        // $blog_categories=BlogCategory::all()->pluck('name','id');
+        $key = Input::get('from');
         $blogs=Blogs::find($id);
-        // Former::populate($blogs);
-        return view('admin.blogs.show',compact('blogs'));
+        return view('admin.blogs.show',compact('blogs','key'));
     }
 
     //Edit the blogs

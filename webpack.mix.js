@@ -27,5 +27,7 @@ mix.scripts(['public/scripts/script.js',
 			'public/plugins/datatables/media/js/button/buttons.flash.js',
 			'public/plugins/datatables/media/js/button/pdfmake.min.js',
 			'public/plugins/datatables/media/js/button/vfs_fonts.js',
+			'public/plugins/highcharts-6.0.7/code/highcharts.js',
+			'public/plugins/highcharts-6.0.7/code/highcharts-more.js',
 			], 'public/js/admin.js');
    // .sass('public/styles/style.css', 'public/css/admin.css');

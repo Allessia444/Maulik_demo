@@ -18,6 +18,7 @@ Route::group(['middleware'=>['authen'],'prefix'=>'admin','namespace'=>'Admin'],f
 	Route::resource('/blogs','BlogsController');
 	Route::get('/blogs/user-blog-details/{id}','BlogsController@user_blog_details')->name('blogs.user_blog_details');
 	Route::resource('/blogcategories','BlogCategoriesController');
+	Route::resource('/tasks','TasksController');
 
 
 });

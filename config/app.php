@@ -236,6 +236,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Former' => 'Former\Facades\Former',
         'Image' => Intervention\Image\Facades\Image::class,
+        'Input' => Illuminate\Support\Facades\Input::class,
     ],
 
 ];
