@@ -12,14 +12,14 @@
 								</div>
 							</div>
 							<div class="project-info-right">
-								<span class="no text-blue weight-500 font-24">{!! $users !!}</span>
+								<span class="no text-blue weight-500 font-24">{!! $user !!}</span>
 								<p class="weight-400 font-18">Users</p>
 							</div>
 						</div>
 						<div class="project-info-progress">
 							<div class="row clearfix">
 								<div class="col-sm-6 text-muted weight-500">Users</div>
-								<div class="col-sm-6 text-right weight-500 font-14 text-muted">{!! $users !!}</div>
+								<div class="col-sm-6 text-right weight-500 font-14 text-muted">{!! $user !!}</div>
 							</div>
 							<div class="progress" style="height: 10px;">
 								<div class="progress-bar bg-blue progress-bar-striped progress-bar-animated" role="progressbar" style="width: 40%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>

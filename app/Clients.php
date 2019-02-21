@@ -17,7 +17,6 @@ class Clients extends Model
         {
             upload_move($file,'logo');
             @unlink($source_path);
-        //$this->deleteFile();
         }
             $this->attributes['logo'] = $file;
             if ($file == '') 
@@ -27,6 +26,15 @@ class Clients extends Model
             }
     }
 
+    public function photo_url($type='original') 
+    {
+        if (!empty($this->logo))
+            return upload_url($this->logo,'logo',$type);
+        elseif (!empty($this->logo) && file_exists(tmp_path($this->logo)))
+            return tmp_url($this->$logo);
+        else
+            return asset('images/graduate.png');
+    }
 
         public function industrys(){
         return $this->belongsTo('App\Industrys','industry_id');

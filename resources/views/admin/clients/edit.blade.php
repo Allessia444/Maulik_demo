@@ -33,7 +33,7 @@
 			<div id="container form-group-row">
 				<label>Logo</label>
 				<input type="hidden"  name="logo" id="file">
-				<img src="{!! asset('/clients/logo/'.$client->logo) !!}" style="height: 50px; width: 50px;" alt="">							
+				<img src="{!! $client->photo_url() !!}" style="height: 50px; width: 50px;" alt="">							
 				<a id="browse" href="javascript:;">[Browse...]</a>
 				<a id="start-upload" href="javascript:;">[Start Upload]</a>
 				<ul id="filelist"></ul>

@@ -37,6 +37,7 @@
 			{!! Former::select('industry_id')->class('form-control')->options($industrys)->select($client->industry_id) !!}
 			{!! Former::input('name')->class('form-control') !!}
 			<label>Logo</label>
+			<img src="{!! $client->photo_url() !!}" style="height: 100px; width: 150px;" alt="">
 			{!! Former::input('email')->class('form-control') !!}
 			{!! Former::input('website')->class('form-control') !!}
 			{!! Former::input('phone')->class('form-control') !!}

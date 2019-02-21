@@ -17,7 +17,13 @@
 						</ol>
 					</nav>
 				</div>
-
+				<div class="col-md-6 col-sm-12 text-right">
+					<div class="dropdown">
+						<a class="btn btn-primary " href="{!! route('users.index') !!}" role="button" >
+							Back
+						</a>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div class="pd-20 bg-white border-radius-4 box-shadow mb-30">
@@ -30,7 +36,7 @@
 			{!! Former::input('phone')->class('form-control') !!}
 			<div id="container form-group-row">
 				<label>Photo</label>
-				<img src="{!! asset('/profile/'.$user_profile->photo) !!}" style="height: 50px; width: 50px;" alt="">
+				<img src="{!! $user_profile->profile_photo_url() !!}" style="height: 150px; width: 150px;" alt="">
 				<input type="hidden"  name="photo" id="file">
 				<a id="browse" href="javascript:;">[Browse...]</a>
 				<a id="start-upload" href="javascript:;">[Start Upload]</a>
