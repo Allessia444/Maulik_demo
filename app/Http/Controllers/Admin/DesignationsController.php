@@ -53,9 +53,11 @@ class DesignationsController extends Controller
         }
     }
 
+    //Show perticular designation details
     public function show($id)
     {
-        //
+        $designations=Designation::find($id);
+        return view('admin.designations.show',compact('designations'));
     }
     //Edit the designation
     public function edit($id)

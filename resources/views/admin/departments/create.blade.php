@@ -1,4 +1,4 @@
-@extends('common.master')
+@extends('admin.shared.master')
 @section('title','Departments')
 @section('page')
 <div class="pd-ltr-20 customscroll customscroll-10-p height-100-p xs-pd-20-10">
@@ -31,7 +31,7 @@
 			@csrf
 			{!! Former::input('name')->class('form-control') !!}
 			{!! Former::submit('Save')->class('form-group') !!}
-			{!! Former::close() !!}					
+			{!! Former::close() !!}
 		</div>
 	</div>
 </div>

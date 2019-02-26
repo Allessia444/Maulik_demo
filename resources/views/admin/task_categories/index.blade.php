@@ -1,4 +1,4 @@
-@extends('common.layout')
+@extends('admin.shared.layout')
 @section('title','Task Categories')
 @section('page')
 
@@ -8,19 +8,19 @@
 			<div class="row">
 				<div class="col-md-6 col-sm-12">
 					<div class="title">
-						<h4>Taskcategories</h4>
+						<h4>Task categories</h4>
 					</div>
 					<nav aria-label="breadcrumb" role="navigation">
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a href="{!! route('taskcategories.index') !!}">Home</a></li>
-							<li class="breadcrumb-item active" aria-current="page">Taskcategories</li>
+							<li class="breadcrumb-item active" aria-current="page">Task categories</li>
 						</ol>
 					</nav>
 				</div>
 				<div class="col-md-6 col-sm-12 text-right">
 					<div class="dropdown">
 						<a class="btn btn-primary " href="{!! route('taskcategories.create') !!}" role="button" >
-							Add Taskcategories
+							Add Task category
 						</a>
 					</div>
 				</div>

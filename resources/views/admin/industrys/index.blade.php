@@ -1,4 +1,4 @@
-@extends('common.layout')
+@extends('admin.shared.layout')
 @section('title','Industrys')
 @section('page')
 <div class="pd-ltr-20 customscroll customscroll-10-p height-100-p xs-pd-20-10">
@@ -19,7 +19,7 @@
 				<div class="col-md-6 col-sm-12 text-right">
 					<div class="dropdown">
 						<a class="btn btn-primary " href="{!! route('industrys.create') !!}" role="button" >
-							Add Industrys
+							Add Industry
 						</a>
 					</div>
 				</div>

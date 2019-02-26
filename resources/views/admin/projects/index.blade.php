@@ -1,4 +1,4 @@
-@extends('common.layout')
+@extends('admin.shared.layout')
 @section('title','Projects')
 @section('page')
 <div class="pd-ltr-20 customscroll customscroll-10-p height-100-p xs-pd-20-10">
@@ -50,7 +50,7 @@
 										<i class="fa fa-ellipsis-h"></i>
 									</a>
 									<div class="dropdown-menu dropdown-menu-right">
-										<!-- <a class="dropdown-item" href="#"><i class="fa fa-eye"></i> View</a> -->
+										<a class="dropdown-item" href="{!! route('projects.show',['id'=>$project->id]) !!}" title="">Show</a>
 										<a class="dropdown-item" href="{!! route('projects.edit',['id'=>$project->id]) !!}" title="">Edit</a>
 										<form action="{{route('projects.destroy',[$project->id])}}" method="POST">
 											@method('DELETE')

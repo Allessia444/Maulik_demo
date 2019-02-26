@@ -16,7 +16,7 @@ class TasksController extends Controller
     //List all tasks
     public function index()
     {
-        $tasks=Tasks::all();
+        $tasks=Tasks::where('completed','=',0)->get();
         return view('admin.tasks.index',compact('tasks'));
     }
 
@@ -137,5 +137,20 @@ class TasksController extends Controller
         $tasks=Tasks::find($id);
         $tasks->delete();
         return redirect()->route('tasks.index');
+    }
+    //Task completed
+    public function completed(Request $request){
+        $task_id=$request->get('task_id');
+        try{
+            $completed=Tasks::find($task_id);
+            $completed->completed=1;
+            $completed->save();
+            return response()->json([
+                    'status' => 200
+                ]);
+        }
+        catch(\Exception $e){
+            return response()->json(['status'=>422]);
+        }      
     }
 }

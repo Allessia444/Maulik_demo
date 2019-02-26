@@ -1,4 +1,4 @@
-@extends('common.master')
+@extends('admin.shared.master')
 @section('title','Departments')
 @section('page')
 <div class="pd-ltr-20 customscroll customscroll-10-p height-100-p xs-pd-20-10">

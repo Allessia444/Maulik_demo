@@ -1,4 +1,4 @@
-@extends('common.layout')
+@extends('admin.shared.layout')
 @section('title','Blogs')
 @section('page')
 
@@ -15,7 +15,7 @@
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a href="{!! route('blogs.index') !!}">Home</a></li>
 							<li class="breadcrumb-item"><a href="{!! route('blogs.index') !!}">Blogs</a></li>
-							<li class="breadcrumb-item active" aria-current="page">Show blogs details</li>
+							<li class="breadcrumb-item active" aria-current="page">Show Blog </li>
 						</ol>
 					</nav>
 				</div>
@@ -48,6 +48,7 @@
 				<tr>
 					<td>Blog category</td>	<td>{!! $blogs->blog_category->name !!}</td></tr>
 					<tr><td>Name</td><td>{!! $blogs->name !!}</td></tr>
+					<tr><td>Image</td><td><img src="{!! $blogs->blog_photo_url() !!}" style="height: 150px; width: 150px;" alt=""></td></tr>
 					<tr><td>Description</td><td>{!! $blogs->description !!}</td></tr>
 					<tr><td>Author</td><td>{!! $blogs->users->first_name !!}</td></tr>
 					<tr><td>Status</td><td>{!! $blogs->status !!}</td></tr>

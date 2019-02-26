@@ -1,4 +1,4 @@
-@extends('common.master')
+@extends('admin.shared.master')
 @section('title','Projects')
 @section('page')
 <div class="pd-ltr-20 customscroll customscroll-10-p height-100-p xs-pd-20-10">
@@ -13,7 +13,7 @@
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a href="{!! route('projects.index') !!}">Home</a></li>
 							<li class="breadcrumb-item"><a href="{!! route('projects.index') !!}">Projects</a></li>
-							<li class="breadcrumb-item active" aria-current="page">Add Projects Form</li>
+							<li class="breadcrumb-item active" aria-current="page">Add Project</li>
 						</ol>
 					</nav>
 				</div>

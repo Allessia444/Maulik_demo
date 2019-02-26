@@ -1,4 +1,4 @@
-@extends('common.layout')
+@extends('admin.shared.layout')
 @section('title','Blog Categories')
 @section('page')
 
@@ -14,7 +14,7 @@
 					<nav aria-label="breadcrumb" role="navigation">
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a href="{!! route('blogcategories.index') !!}">Home</a></li>
-							<li class="breadcrumb-item active" aria-current="page">Blogcategories</li>
+							<li class="breadcrumb-item active" aria-current="page">Blog_categories</li>
 						</ol>
 					</nav>
 				</div>

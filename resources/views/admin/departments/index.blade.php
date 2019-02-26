@@ -1,4 +1,4 @@
-@extends('common.layout')
+@extends('admin.shared.layout')
 @section('title','Departments')
 @section('page')
 
@@ -12,7 +12,7 @@
 					</div>
 					<nav aria-label="breadcrumb" role="navigation">
 						<ol class="breadcrumb">
-							<li class="breadcrumb-item"><a href="{!! route('designations.index') !!}">Home</a></li>
+							<li class="breadcrumb-item"><a href="{!! route('departments.index') !!}">Home</a></li>
 							<li class="breadcrumb-item active" aria-current="page">Departments</li>
 						</ol>
 					</nav>
@@ -47,13 +47,14 @@
 										<i class="fa fa-ellipsis-h"></i>
 									</a>
 									<div class="dropdown-menu dropdown-menu-right">
+										<a class="dropdown-item" href="{!! route('departments.show',['id'=>$department->id]) !!}" title="">Show</a>
 										<a class="dropdown-item" href="{!! route('departments.edit',['id'=>$department->id]) !!}" title="">Edit</a>
 										<form action="{{route('departments.destroy',[$department->id])}}" method="POST">
 											@method('DELETE')
 											@csrf
 											<button class="dropdown-item" type="submit">Delete</button>               
 										</form>
-
+										<a class="dropdown-item" href="{!! route('departments.teamlead',['id'=>$department->id]) !!}" title=""><i class="fa fa-users"></i></a>
 									</div>
 								</div>
 							</td>

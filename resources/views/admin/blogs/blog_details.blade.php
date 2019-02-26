@@ -1,4 +1,4 @@
-@extends('common.blogs')
+@extends('admin.shared.blogs')
 @section('title','Blogs')
 @section('page')
 <div class="pd-ltr-20 xs-pd-20-10">
@@ -40,11 +40,9 @@
 						<div class="bg-white border-radius-4 box-shadow mb-30">
 							<h5 class="pd-20">Categories</h5>
 							<div class="list-group">
-								<a href="#" class="list-group-item d-flex align-items-center justify-content-between">HTML <span class="badge badge-primary badge-pill">7</span></a>
-								<a href="#" class="list-group-item d-flex align-items-center justify-content-between">Css <span class="badge badge-primary badge-pill">10</span></a>
-								<a href="#" class="list-group-item d-flex align-items-center justify-content-between active">Bootstrap <span class="badge badge-primary badge-pill">8</span></a>
-								<a href="#" class="list-group-item d-flex align-items-center justify-content-between">jQuery <span class="badge badge-primary badge-pill">15</span></a>
-								<a href="#" class="list-group-item d-flex align-items-center justify-content-between">Design <span class="badge badge-primary badge-pill">5</span></a>
+								@foreach($blog_categories as $blog_category)
+									<a href="{!!  route('guest_user',['slug'=>$blog_category->slug]) !!}" class="list-group-item d-flex align-items-center justify-content-between">{!! $blog_category->name !!} <span class="badge badge-primary badge-pill">{!! $blog_category->blogs->count() !!}</span></a>
+								@endforeach
 							</div>
 						</div>
 						<div class="bg-white border-radius-4 box-shadow mb-30">

@@ -1,4 +1,4 @@
-@extends('common.layout')
+@extends('admin.shared.layout')
 @section('title','Designations')
 @section('page')
 
@@ -47,12 +47,14 @@
 										<i class="fa fa-ellipsis-h"></i>
 									</a>
 									<div class="dropdown-menu dropdown-menu-right">
+										<a class="dropdown-item" href="{!! route('designations.show',['id'=>$designation->id]) !!}" title="">Show</a>
 										<a class="dropdown-item" href="{!! route('designations.edit',['id'=>$designation->id]) !!}" title="">Edit</a>
 										<form action="{{route('designations.destroy',[$designation->id])}}" method="POST">
 											@method('DELETE')
 											@csrf
 											<button class="dropdown-item" type="submit">Delete</button>               
 										</form>
+										<!-- <a href="{!!route('designations.destroy',['id'=>$designation->id])!!}" data-toggle="tooltip" title="delete" class="btn btn-sm btn-danger" data-confirm="Are you sure want to delete?"><i class="fa fa-trash"></i></a> -->
 									</div>
 								</div>
 							</td>
@@ -65,5 +67,21 @@
 	</div>
 </div>
 @endsection
-
-
+@section('script')
+<!-- <script type="text/javascript">
+jQuery(function(){
+	jQuery("[data-confirm]").bind("click",function(e){        
+		e.preventDefault();    
+		var message = jQuery(this).data('confirm')? jQuery(this).data('confirm') : 'Are you sure?';    
+		if(confirm(message))    
+			{        
+				var form = jQuery('<form />').attr('method','post').attr('action',jQuery(this).attr('href'));      
+				message != "Are you sure want to logout?" ? jQuery('<input />').attr('type','hidden').attr('name','_method').attr('value','delete').appendTo(form) : "";      
+				jQuery('<input />').attr('type','hidden').attr('name','_token').attr('value',jQuery('meta[name="_token"]').attr('content')).appendTo(form);      
+				// jQuery('body').append(form);      
+				form.submit();    
+			}  
+		});
+});
+</script> -->
+@endsection

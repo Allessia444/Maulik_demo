@@ -1,4 +1,4 @@
-@extends('common.layout')
+@extends('admin.shared.layout')
 @section('title','Project Categories')
 @section('page')
 
@@ -9,19 +9,19 @@
 			<div class="row">
 				<div class="col-md-6 col-sm-12">
 					<div class="title">
-						<h4>Project_categorys</h4>
+						<h4>Project_categories</h4>
 					</div>
 					<nav aria-label="breadcrumb" role="navigation">
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a href="{!! route('projectcategories.index') !!}">Home</a></li>
-							<li class="breadcrumb-item active" aria-current="page">projectcategories</li>
+							<li class="breadcrumb-item active" aria-current="page">Project_categories</li>
 						</ol>
 					</nav>
 				</div>
 				<div class="col-md-6 col-sm-12 text-right">
 					<div class="dropdown">
 						<a class="btn btn-primary " href="{!! route('projectcategories.create') !!}" role="button" >
-							Add project_category
+							Add Project_category
 						</a>
 					</div>
 				</div>

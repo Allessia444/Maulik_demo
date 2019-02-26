@@ -26,6 +26,6 @@ class BlogCategory extends Model
     }  
 
     public function blogs(){
-        return $this->hasone('App\Blogs','blog_category_id');
+        return $this->hasMany('App\Blog','blog_category_id');
     }
 }

@@ -1,4 +1,4 @@
-@extends('common.master')
+@extends('admin.shared.master')
 @section('title','Blogs')
 @section('page')
 <div class="pd-ltr-20 customscroll customscroll-10-p height-100-p xs-pd-20-10">
@@ -13,7 +13,7 @@
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a href="{!! route('blogs.index') !!}">Home</a></li>
 							<li class="breadcrumb-item"><a href="{!! route('blogs.index') !!}">Blogs</a></li>
-							<li class="breadcrumb-item active" aria-current="page">Edit Blogs Form</li>
+							<li class="breadcrumb-item active" aria-current="page">Edit Blog</li>
 						</ol>
 					</nav>
 				</div>
@@ -33,7 +33,7 @@
 			{!! Former::input('name')->class('form-control') !!}
 			<div id="container form-group-row">
 				<label>Photo</label>
-				<img src="{!! asset('/uploads/blog/'.$blogs->photo) !!}" style="height: 150px; width: 150px;" alt="">
+				<img src="{!! $blogs->blog_photo_url() !!}" style="height: 150px; width: 150px;" alt="">
 				<input type="hidden"  name="photo" id="file">
 				<a id="browse" href="javascript:;">[Browse...]</a>
 				<a id="start-upload" href="javascript:;">[Start Upload]</a>
@@ -43,7 +43,7 @@
 			{!! Former::hidden('status')->class('form-control')->value(0) !!}
 			<input type="hidden" name="status" value="0">
 			<label>Status</label>
-			<input type="checkbox" name="status" value="1">
+			<input type="checkbox" name="status" value="1" @if($blogs->status == 1)checked  @endif>
 			<br>
 			{!! Former::submit('Save')->class('form-group') !!}
 			{!! Former::close() !!}					

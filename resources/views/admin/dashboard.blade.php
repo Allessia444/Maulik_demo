@@ -1,90 +1,90 @@
-@extends('common.master')
+@extends('admin.shared.master')
 @section('title','Dashboard')
 @section('page')
-    <div class="pd-ltr-20 customscroll customscroll-10-p height-100-p xs-pd-20-10">
-			<div class="row clearfix progress-box">
-				<div class="col-lg-4 col-md-6 col-sm-12 mb-30">
-					<div class="bg-white pd-20 box-shadow border-radius-5 height-100-p">
-						<div class="project-info clearfix">
-							<div class="project-info-left">
-								<div class="icon box-shadow bg-blue text-white">
-									<i class="fa fa-briefcase"></i>
-								</div>
-							</div>
-							<div class="project-info-right">
-								<span class="no text-blue weight-500 font-24">{!! $user !!}</span>
-								<p class="weight-400 font-18">Users</p>
-							</div>
-						</div>
-						<div class="project-info-progress">
-							<div class="row clearfix">
-								<div class="col-sm-6 text-muted weight-500">Users</div>
-								<div class="col-sm-6 text-right weight-500 font-14 text-muted">{!! $user !!}</div>
-							</div>
-							<div class="progress" style="height: 10px;">
-								<div class="progress-bar bg-blue progress-bar-striped progress-bar-animated" role="progressbar" style="width: 40%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-							</div>
+<div class="pd-ltr-20 customscroll customscroll-10-p height-100-p xs-pd-20-10">
+	<div class="row clearfix progress-box">
+		<div class="col-lg-4 col-md-6 col-sm-12 mb-30">
+			<div class="bg-white pd-20 box-shadow border-radius-5 height-100-p">
+				<div class="project-info clearfix">
+					<div class="project-info-left">
+						<div class="icon box-shadow bg-blue text-white">
+							<i class="fa fa-briefcase"></i>
 						</div>
 					</div>
-				</div>
-				<div class="col-lg-4 col-md-6 col-sm-12 mb-30">
-					<div class="bg-white pd-20 box-shadow border-radius-5 height-100-p">
-						<div class="project-info clearfix">
-							<div class="project-info-left">
-								<div class="icon box-shadow bg-light-green text-white">
-									<i class="fa fa-handshake-o"></i>
-								</div>
-							</div>
-							<div class="project-info-right">
-								<span class="no text-light-green weight-500 font-24">{!! $clients !!}</span>
-								<p class="weight-400 font-18">Clients</p>
-							</div>
-						</div>
-						<div class="project-info-progress">
-							<div class="row clearfix">
-								<div class="col-sm-6 text-muted weight-500">Clients</div>
-								<div class="col-sm-6 text-right weight-500 font-14 text-muted">{!! $clients !!}</div>
-							</div>
-							<div class="progress" style="height: 10px;">
-								<div class="progress-bar bg-light-green progress-bar-striped progress-bar-animated" role="progressbar" style="width: 50%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-							</div>
-						</div>
+					<div class="project-info-right">
+						<span class="no text-blue weight-500 font-24">{!! $user !!}</span>
+						<p class="weight-400 font-18">Users</p>
 					</div>
 				</div>
-				<div class="col-lg-4 col-md-6 col-sm-12 mb-30">
-					<div class="bg-white pd-20 box-shadow border-radius-5 height-100-p">
-						<div class="project-info clearfix">
-							<div class="project-info-left">
-								<div class="icon box-shadow bg-light-orange text-white">
-									<i class="fa fa-list-alt"></i>
-								</div>
-							</div>
-							<div class="project-info-right">
-								<span class="no text-light-orange weight-500 font-24">{!! $projects !!}</span>
-								<p class="weight-400 font-18">Projects</p>
-							</div>
-						</div>
-						<div class="project-info-progress">
-							<div class="row clearfix">
-								<div class="col-sm-6 text-muted weight-500">Projects</div>
-								<div class="col-sm-6 text-right weight-500 font-14 text-muted">{!! $projects !!}</div>
-							</div>
-							<div class="progress" style="height: 10px;">
-								<div class="progress-bar bg-light-orange progress-bar-striped progress-bar-animated" role="progressbar" style="width: 80%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-							</div>
-						</div>
+				<div class="project-info-progress">
+					<div class="row clearfix">
+						<div class="col-sm-6 text-muted weight-500">Users</div>
+						<div class="col-sm-6 text-right weight-500 font-14 text-muted">{!! $user !!}</div>
+					</div>
+					<div class="progress" style="height: 10px;">
+						<div class="progress-bar bg-blue progress-bar-striped progress-bar-animated" role="progressbar" style="width: 40%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 					</div>
 				</div>
-				
 			</div>
-			<div class="bg-white pd-20 box-shadow border-radius-5 mb-30">
-				<h4 class="mb-30">Area Spline Chart</h4>
-					<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-30">
-						<div class="bg-white pd-20 box-shadow border-radius-5 height-100-p">
-							<div id="chart1"></div>
+		</div>
+		<div class="col-lg-4 col-md-6 col-sm-12 mb-30">
+			<div class="bg-white pd-20 box-shadow border-radius-5 height-100-p">
+				<div class="project-info clearfix">
+					<div class="project-info-left">
+						<div class="icon box-shadow bg-light-green text-white">
+							<i class="fa fa-handshake-o"></i>
 						</div>
 					</div>
+					<div class="project-info-right">
+						<span class="no text-light-green weight-500 font-24">{!! $clients !!}</span>
+						<p class="weight-400 font-18">Clients</p>
+					</div>
+				</div>
+				<div class="project-info-progress">
+					<div class="row clearfix">
+						<div class="col-sm-6 text-muted weight-500">Clients</div>
+						<div class="col-sm-6 text-right weight-500 font-14 text-muted">{!! $clients !!}</div>
+					</div>
+					<div class="progress" style="height: 10px;">
+						<div class="progress-bar bg-light-green progress-bar-striped progress-bar-animated" role="progressbar" style="width: 50%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+					</div>
+				</div>
 			</div>
+		</div>
+		<div class="col-lg-4 col-md-6 col-sm-12 mb-30">
+			<div class="bg-white pd-20 box-shadow border-radius-5 height-100-p">
+				<div class="project-info clearfix">
+					<div class="project-info-left">
+						<div class="icon box-shadow bg-light-orange text-white">
+							<i class="fa fa-list-alt"></i>
+						</div>
+					</div>
+					<div class="project-info-right">
+						<span class="no text-light-orange weight-500 font-24">{!! $projects !!}</span>
+						<p class="weight-400 font-18">Projects</p>
+					</div>
+				</div>
+				<div class="project-info-progress">
+					<div class="row clearfix">
+						<div class="col-sm-6 text-muted weight-500">Projects</div>
+						<div class="col-sm-6 text-right weight-500 font-14 text-muted">{!! $projects !!}</div>
+					</div>
+					<div class="progress" style="height: 10px;">
+						<div class="progress-bar bg-light-orange progress-bar-striped progress-bar-animated" role="progressbar" style="width: 80%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	<div class="bg-white pd-20 box-shadow border-radius-5 mb-30">
+		<h4 class="mb-30">Area Spline Chart</h4>
+		<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-30">
+			<div class="bg-white pd-20 box-shadow border-radius-5 height-100-p">
+				<div id="chart1"></div>
+			</div>
+		</div>
+	</div>
 
 			<!-- <div class="row clearfix">
 				<div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 mb-30">
@@ -395,8 +395,8 @@
 		</div>
 @endsection
 @section('script')
-	<script src="https://code.highcharts.com/highcharts-3d.js"></script>
-	<script type="text/javascript">
+		<script src="https://code.highcharts.com/highcharts-3d.js"></script>
+		<script type="text/javascript">
 		// chart 1
 		Highcharts.chart('chart1', {
 			title: {

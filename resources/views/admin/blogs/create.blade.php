@@ -1,4 +1,4 @@
-@extends('common.master')
+@extends('admin.shared.master')
 @section('title','Blogs')
 @section('page')
 <div class="pd-ltr-20 customscroll customscroll-10-p height-100-p xs-pd-20-10">
@@ -13,7 +13,7 @@
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a href="{!! route('blogs.index') !!}">Home</a></li>
 							<li class="breadcrumb-item"><a href="{!! route('blogs.index') !!}">Blogs</a></li>
-							<li class="breadcrumb-item active" aria-current="page">Add Blogs Form</li>
+							<li class="breadcrumb-item active" aria-current="page">Add Blog</li>
 						</ol>
 					</nav>
 				</div>
@@ -50,40 +50,47 @@
 </div>
 @endsection
 @section('script')
-<script type="text/javascript" src="{!! asset('js/plupload.full.min.js') !!}"></script>
-<script type="text/javascript">
-	var uploader = new plupload.Uploader({
+<script src="{!! asset('unisharp/laravel-ckeditor/ckeditor.js') !!}"></script>
+<script src="{!! asset('unisharp/laravel-ckeditor/adapters/jquery.js') !!}"></script>
+<script>
+	$('textarea').ckeditor();
+        // $('.textarea').ckeditor(); // if class is prefered.
+    </script>
+    <script type="text/javascript" src="{!! asset('js/plupload.full.min.js') !!}"></script>
+    <script type="text/javascript">
+    	var uploader = new plupload.Uploader({
   browse_button: 'browse', // this can be an id of a DOM element or the DOM element itself
   url: "{!! asset('plupload/upload.php') !!}",
 flash_swf_url : '../js/Moxie.swf',
 silverlight_xap_url : '../js/Moxie.xap',
 });
-	 uploader.init();
-	
-	uploader.bind('FilesAdded', function(up, files) {
-		var html = '';
-		plupload.each(files, function(file) {
-			html += '<li id="' + file.id + '">' + file.name + ' (' + plupload.formatSize(file.size) + ') <b></b></li>';
-		});
-		document.getElementById('filelist').innerHTML += html;
-	});
-	
-	uploader.bind('UploadProgress', function(up, file) {
-		document.getElementById(file.id).getElementsByTagName('b')[0].innerHTML = '<span>' + file.percent + "%</span>";
-	});
-	
-	uploader.bind('Error', function(up, err) {
-		document.getElementById('console').innerHTML += "\nError #" + err.code + ": " + err.message;
-	});
-	
-	document.getElementById('start-upload').onclick = function() {
-		uploader.start();
-	};
-	uploader.bind('FileUploaded', function(up, file, info) {
+    	 uploader.init();
+    	
+    	uploader.bind('FilesAdded', function(up, files) {
+    		var html = '';
+    		plupload.each(files, function(file) {
+    			html += '<li id="' + file.id + '">' + file.name + ' (' + plupload.formatSize(file.size) + ') <b></b></li>';
+    		});
+    		document.getElementById('filelist').innerHTML += html;
+    	});
+    	
+    	uploader.bind('UploadProgress', function(up, file) {
+    		document.getElementById(file.id).getElementsByTagName('b')[0].innerHTML = '<span>' + file.percent + "%</span>";
+    	});
+    	
+    	uploader.bind('Error', function(up, err) {
+    		document.getElementById('console').innerHTML += "\nError #" + err.code + ": " + err.message;
+    	});
+    	
+    	document.getElementById('start-upload').onclick = function() {
+    		uploader.start();
+    	};
+    	uploader.bind('FileUploaded', function(up, file, info) {
   	// var filename=file.name;
   	alert(file.name);
   	console.log(document.getElementById('file'));
   	document.getElementById('file').value =file.name;
   });
 </script>
+
 @endsection

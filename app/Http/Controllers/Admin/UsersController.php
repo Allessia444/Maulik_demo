@@ -9,10 +9,14 @@ use App\User;
 use App\UserProfile;
 use App\Department;
 use App\Designation;
-use App\Blogs;
+use App\Blog;
 use Validator;
 use Former;
 use Auth;
+use App\Imports\UsersImport;
+use App\Exports\UsersExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 class UsersController extends Controller
 {
     //List all users
@@ -111,7 +115,7 @@ class UsersController extends Controller
     {
         $user=User::find($id);
         $user_profile=User::find($id)->user_profile;
-        $blogs=Blogs::where('user_id','=',$id)->get();
+        $blogs=Blog::where('user_id','=',$id)->get();
         Former::populate($user);
 
         return view('admin.users.show',compact('user','user_profile','blogs'));
@@ -213,7 +217,7 @@ class UsersController extends Controller
       $user->delete();
       return redirect()->route('users.index');
     }
-
+    //Edit profile of user for user side
     public function edit_profile(){
         $user_id=Auth::user()->id;
         $user=User::find($user_id);
@@ -221,7 +225,7 @@ class UsersController extends Controller
         Former::populate($user);
         return view('portal.users.profile1',compact('user','user_profile'));
     }
-
+    //Update the profile of user for user side
     public function update_profile(Request $request, $id){
         //Rules for validation
         $rules=[
@@ -254,9 +258,9 @@ class UsersController extends Controller
             $user->last_name = $request->get('last_name');
             $user->email = $request->get('email');
             $user->phone=$request->get('phone');
-            $user->department_id=$request->get('department_id');
-            $user->designation_id=$request->get('designation_id');
-            $user->team_lead=$request->get('team_lead');
+            // $user->department_id=$request->get('department_id');
+            // $user->designation_id=$request->get('designation_id');
+            // $user->team_lead=$request->get('team_lead');
             $user->save();
 
             $userprofile=$user->user_profile;
@@ -300,7 +304,7 @@ class UsersController extends Controller
         }
 
     }
-
+    //Upload profile photo of user from user side
     public function upload_profile(Request $request){
         try{
             $profile= $request->profile;
@@ -316,8 +320,18 @@ class UsersController extends Controller
         catch(\Exception $e){
             return response()->json(['status'=>422]);
         }
-        
+    }
 
-        
+    //Import users data
+    public function import(Request $request) 
+    {
+        $file=public_path().'/tmp/'.$request->get('file');
+         Excel::import(new UsersImport, $file);
+         return 'hii';
+    }
+    //Export the users
+    public function export() 
+    {
+         return Excel::download(new UsersExport, 'users.xlsx');
     }
 }

@@ -1,4 +1,4 @@
-@extends('common.master')
+@extends('admin.shared.master')
 @section('title','Designations')
 @section('page')
 <div class="pd-ltr-20 customscroll customscroll-10-p height-100-p xs-pd-20-10">
@@ -13,16 +13,9 @@
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a href="{!! route('designations.index') !!}">Home</a></li>
 							<li class="breadcrumb-item"><a href="{!! route('designations.index') !!}">Designation</a></li>
-							<li class="breadcrumb-item active" aria-current="page">Add Designation Form</li>
+							<li class="breadcrumb-item active" aria-current="page">Add Designation </li>
 						</ol>
 					</nav>
-				</div>
-				<div class="col-md-6 col-sm-12 text-right">
-					<div class="dropdown">
-						<a class="btn btn-primary " href="{!! route('designations.index') !!}" role="button" >
-							Back
-						</a>
-					</div>
 				</div>
 				<div class="col-md-6 col-sm-12 text-right">
 					<div class="dropdown">

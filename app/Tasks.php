@@ -17,4 +17,8 @@ class Tasks extends Model
     public function task_category(){
         return $this->belongsTo('App\TaskCategory','task_category_id');
     }
+
+    public function tasks(){
+        return $this->hasMany('App\TaskLog','task_id');
+    }
 }

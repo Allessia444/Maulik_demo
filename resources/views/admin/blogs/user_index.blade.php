@@ -1,4 +1,4 @@
-@extends('common.layout')
+@extends('admin.shared.layout')
 @section('title','Blogs')
 @section('page')
 
@@ -36,7 +36,7 @@
 							<div class="contact-dire-info text-center">
 								<div class="contact-avatar">
 									<span>
-										<img src="{!! asset('/uploads/blog/'.$blog->photo) !!}" alt="">
+										<img src="{!! $blog->blog_photo_url('list') !!}" alt="">
 									</span>
 								</div>
 								<div class="contact-name">
@@ -54,13 +54,13 @@
 									{!! $blog->description !!}
 								</div>
 							</div>
-							<div class="contact-skill">
-								<a href="{!! route('blogs.user_blog_details',['id'=>$blog->id]) !!}" class="badge badge-pill btn btn-outline-primary">View Profile</a>
-								<a href="{!! route('blogs.edit',['id'=>$blog->id]) !!}" class="badge badge-pill btn btn-outline-primary">Edit</a>
+							<div class="btn btn-list ">
+								<a href="{!! route('blogs.user_blog_details',['id'=>$blog->id]) !!}" class=" btn btn-outline-primary">View Profile</a>
+								<a href="{!! route('blogs.edit',['id'=>$blog->id]) !!}" class=" btn btn-outline-primary">Edit</a>
 								<form action="{{route('blogs.destroy',[$blog->id])}}" method="POST">
 									@method('DELETE')
 									@csrf
-									<button class="badge badge-pill btn btn-outline-primary" type="submit">Delete</button>               
+									<button class=" btn btn-outline-primary" type="submit">Delete</button>               
 								</form>
 							</div>
 							<!-- <div class="view-contact">

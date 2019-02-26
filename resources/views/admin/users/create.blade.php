@@ -1,4 +1,4 @@
-@extends('common.master')
+@extends('admin.shared.master')
 @section('title','Users')
 @section('page')
 <div class="pd-ltr-20 customscroll customscroll-10-p height-100-p xs-pd-20-10">
@@ -17,6 +17,13 @@
 						</ol>
 					</nav>
 				</div>
+				<div class="col-md-6 col-sm-12 text-right">
+					<div class="dropdown">
+						<a class="btn btn-primary " href="{!! route('users.index') !!}" role="button" >
+							Back
+						</a>
+					</div>
+				</div>	
 			</div>
 		</div>
 		<div class="pd-20 bg-white border-radius-4 box-shadow mb-30">

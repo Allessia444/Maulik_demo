@@ -1,4 +1,4 @@
-@extends('common.master')
+@extends('admin.shared.master')
 @section('title','Clients')
 @section('page')
 <div class="pd-ltr-20 customscroll customscroll-10-p height-100-p xs-pd-20-10">
@@ -7,13 +7,13 @@
 			<div class="row">
 				<div class="col-md-6 col-sm-12">
 					<div class="title">
-						<h4>Users </h4>
+						<h4>Clients </h4>
 					</div>
 					<nav aria-label="breadcrumb" role="navigation">
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a href="{!! route('clients.index') !!}">Home</a></li>
 							<li class="breadcrumb-item"><a href="{!! route('clients.index') !!}">Clients</a></li>
-							<li class="breadcrumb-item active" aria-current="page"> Client Form</li>
+							<li class="breadcrumb-item active" aria-current="page">Show Client</li>
 						</ol>
 					</nav>
 				</div>
@@ -27,32 +27,67 @@
 			</div>
 		</div>
 		<div class="pd-20 bg-white border-radius-4 box-shadow mb-30">
-			<div class="clearfix">
-				<div class="pull-left">
-					<h4 class="text-blue">Default Basic Forms</h4>
-					<p class="mb-30 font-14">All bootstrap element classies</p>
-				</div>
-			</div>
-			{!! Former::open() !!} 
-			{!! Former::select('industry_id')->class('form-control')->options($industrys)->select($client->industry_id) !!}
-			{!! Former::input('name')->class('form-control') !!}
-			<label>Logo</label>
-			<img src="{!! $client->photo_url() !!}" style="height: 100px; width: 150px;" alt="">
-			{!! Former::input('email')->class('form-control') !!}
-			{!! Former::input('website')->class('form-control') !!}
-			{!! Former::input('phone')->class('form-control') !!}
-			{!! Former::input('fax')->class('form-control') !!}
-			{!! Former::textarea('address1')->class('form-control') !!}
-			{!! Former::textarea('address2')->class('form-control') !!}
-			{!! Former::input('city')->class('form-control') !!}
-			{!! Former::input('state')->class('form-control') !!}
-			{!! Former::input('country')->class('form-control') !!}
-			{!! Former::input('zipcode')->class('form-control') !!}
-			{!! Former::close() !!}
+			<table class="table">
+				<tbody>
+					<tr>
+						<td>Id</td>
+						<td>{!! $client->id !!}</td>
+					</tr>
+					<tr>
+						<td>Industry Id</td>
+						<td>{!! $client->industrys->name !!}</td>
+					</tr>
+					<tr>
+						<td>Name</td>
+						<td>{!! $client->name !!}</td>
+					</tr>
+					<tr>
+						<td>Logo</td>
+						<td><img src="{!! $client->photo_url() !!}" style="height: 150px; width: 150px;" alt=""></td>
+					</tr>
+					<tr>
+						<td>Email</td>
+						<td>{!! $client->email !!}</td>
+					</tr>
+					<tr>
+						<td>Website</td>
+						<td>{!! $client->website !!}</td>
+					</tr>
+					<tr>
+						<td>Phone</td>
+						<td>{!! $client->phone !!}</td>
+					</tr>
+					<tr>
+						<td>Fax</td>
+						<td>{!! $client->fax !!}</td>
+					</tr>
+					<tr>
+						<td>Address1</td>
+						<td>{!! $client->address1 !!}</td>
+					</tr>
+					<tr>
+						<td>Address2</td>
+						<td>{!! $client->address2 !!}</td>
+					</tr>
+					<tr>
+						<td>City</td>
+						<td>{!! $client->city !!}</td>
+					</tr>
+					<tr>
+						<td>State</td>
+						<td>{!! $client->state !!}</td>
+					</tr>
+					<tr>
+						<td>Country</td>
+						<td>{!! $client->country !!}</td>
+					</tr>
+					<tr>
+						<td>Zipcode</td>
+						<td>{!! $client->zipcode !!}</td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
 	</div>
 </div>
-@endsection
-@section('script')
-<script type="text/javascript" src="{!! asset('js/plupload.full.min.js') !!}"></script>
 @endsection

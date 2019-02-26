@@ -1,4 +1,4 @@
-@extends('common.layout')
+@extends('admin.shared.layout')
 @section('title','Tasks')
 @section('page')
 
@@ -32,6 +32,8 @@
 				<table class="data-table stripe hover nowrap">
 					<thead>
 						<tr>
+
+							<th>Completed</th>
 							<th class="table-plus datatable-nosort">Id</th>
 							<th>Task_category</th>
 							<th>user</th>
@@ -44,6 +46,7 @@
 					<tbody>
 						@foreach($tasks as $task)
 						<tr>
+							<td><input type="checkbox" class="completed" name="completed" value="{!! $task->id !!}" ></td>
 							<td class="table-plus">{!! $task->id !!}</td>
 							<td>{!! $task->task_category->name !!}</td>
 							<td>{!! $task->users->first_name !!}</td>
@@ -56,8 +59,9 @@
 										<i class="fa fa-ellipsis-h"></i>
 									</a>
 									<div class="dropdown-menu dropdown-menu-right">
-									<a class="dropdown-item" href="{!! route('tasks.show',['id'=>$task->id]) !!}" title="">Show</a>
+										<a class="dropdown-item" href="{!! route('tasks.show',['id'=>$task->id]) !!}" title="">Show</a>
 										<a class="dropdown-item" href="{!! route('tasks.edit',['id'=>$task->id]) !!}" title="">Edit</a>
+										<a class="dropdown-item" href="{!! route('tasks.task_logs.index',['id'=>$task->id]) !!}" title="">Task logs</a>
 										<form action="{{route('tasks.destroy',[$task->id])}}" method="POST">
 											@method('DELETE')
 											@csrf
@@ -77,3 +81,25 @@
 	</div>
 </div>
 @endsection('page')
+@section('script')
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$(document).on('click','.completed',function(e){
+				e.preventDefault();
+				var task_id=$(this).attr('value');
+				$.ajax({
+					url: "{!! route('tasks.completed') !!}",
+					type: 'POST',
+					data: {'task_id': task_id,"_token": "{!! csrf_token() !!}"},
+					success:function(data){
+						location.reload();
+					},
+					error:function(data){
+						alert(data);
+					}
+				});
+				
+			});
+		});
+	</script>
+@endsection

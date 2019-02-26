@@ -11,7 +11,7 @@ class User extends Authenticatable
     use Notifiable;
 
     protected $fillable = [
-        'first_name','last_name', 'email', 'password','contact','department_id','designation_id','team_lead','role'
+        'first_name','last_name', 'email', 'password','phone','department_id','designation_id','team_lead','role'
     ];
 
     protected $hidden = [
@@ -37,13 +37,16 @@ class User extends Authenticatable
     }
 
     public function blogs(){
-        return $this->hasone('App\Blogs','user_id');
+        return $this->hasone('App\Blog','user_id');
         
     }
 
     public function tasks(){
-        return $this->hasone('App\Tasks','user_id');
-        
+        return $this->hasone('App\Tasks','user_id');   
+    }
+
+    public function task_logs(){
+        return $this->hasone('App\TaskLog','user');   
     }
 
 

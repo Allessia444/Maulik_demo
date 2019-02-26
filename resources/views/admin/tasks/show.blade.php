@@ -1,4 +1,4 @@
-@extends('common.layout')
+@extends('admin.shared.layout')
 @section('title','Tasks')
 @section('page')
 <div class="pd-ltr-20 customscroll customscroll-10-p height-100-p xs-pd-20-10">
@@ -13,7 +13,7 @@
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a href="{!! route('tasks.index') !!}">Home</a></li>
 							<li class="breadcrumb-item"><a href="{!! route('tasks.index') !!}">Tasks</a></li>
-							<li class="breadcrumb-item active" aria-current="page">Show task</li>
+							<li class="breadcrumb-item active" aria-current="page">Show Task</li>
 						</ol>
 					</nav>
 				</div>

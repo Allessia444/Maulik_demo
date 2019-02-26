@@ -1,4 +1,4 @@
-@extends('common.master')
+@extends('admin.shared.master')
 @section('title','User')
 @section('page')
 <div class="pd-ltr-20 customscroll customscroll-10-p height-100-p xs-pd-20-10">
@@ -19,7 +19,6 @@
 				
 			</div>
 		</div>
-		<!-- Default Basic Forms Start -->
 		<div class="pd-20 bg-white border-radius-4 box-shadow mb-30">
 			<div class="clearfix">
 				<div class="pull-left">
@@ -48,38 +47,24 @@
 						<input class="form-control" name="email" value="bootstrap@example.com" type="email">
 					</div>
 				</div>
-						<!-- <div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">URL</label>
-							<div class="col-sm-12 col-md-10">
-								<input class="form-control" value="https://getbootstrap.com" type="url">
-							</div>
-						</div> -->
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Contact</label>
-							<div class="col-sm-12 col-md-10">
-								<input class="form-control" name="contact" value="1-(111)-111-1111" type="tel">
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Password</label>
-							<div class="col-sm-12 col-md-10">
-								<input class="form-control" name="password" value="password" type="password">
-							</div>
-						</div>
-						<input type="hidden" name="role" value="user">
-						
-						<div class="form-group row">
-							<input class="col-sm-6 col-md-4" type="submit" name="submit" value="submit">
-							
-						</div>
-					</form>
-					
+				<div class="form-group row">
+					<label class="col-sm-12 col-md-2 col-form-label">Contact</label>
+					<div class="col-sm-12 col-md-10">
+						<input class="form-control" name="contact" value="1-(111)-111-1111" type="tel">
+					</div>
 				</div>
-				<!-- Default Basic Forms End -->
-
-				
-				<!-- Input Validation End -->
-
-			</div>
+				<div class="form-group row">
+					<label class="col-sm-12 col-md-2 col-form-label">Password</label>
+					<div class="col-sm-12 col-md-10">
+						<input class="form-control" name="password" value="password" type="password">
+					</div>
+				</div>
+				<input type="hidden" name="role" value="user">
+				<div class="form-group row">
+					<input class="col-sm-6 col-md-4" type="submit" name="submit" value="submit">
+				</div>
+			</form>
 		</div>
-		@endsection
+	</div>
+</div>
+@endsection

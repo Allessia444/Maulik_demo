@@ -59,9 +59,11 @@ class ProjectsController extends Controller
         }
     }
 
+    //Show perticular project details
     public function show($id)
     {
-        //
+        $projects=Projects::find($id);
+        return view('admin.projects.show',compact('projects'));
     }
     //Edit the project
     public function edit($id)

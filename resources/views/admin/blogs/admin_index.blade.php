@@ -1,8 +1,6 @@
-@extends('common.layout')
+@extends('admin.shared.layout')
 @section('title','Blogs')
 @section('page')
-
-
 <div class="pd-ltr-20 customscroll customscroll-10-p height-100-p xs-pd-20-10">
 	<div class="min-height-200px">
 		<div class="page-header">
@@ -20,9 +18,19 @@
 				</div>
 				<div class="col-md-6 col-sm-12 text-right">
 					<div class="dropdown">
-						<a class="btn btn-primary " href="{!! route('blogs.create') !!}" role="button" >
-							Add Blogs
-						</a>
+						<div class="btn-list row pull-right">
+							<a class="btn btn-primary " href="{!! route('blogs.create') !!}" role="button" >
+								Add Blog
+							</a>
+							<div id="container">
+								<input type="hidden"  name="import" id="file">
+								<a id="import" href="javascript:;" class="btn btn-primary">Import File</a>
+								<ul id="attachlist"></ul>
+							</div>
+							<a class="btn btn-primary " href="{!! route('blogs.export') !!}" role="button" >
+								Export
+							</a>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -74,4 +82,90 @@
 		
 	</div>
 </div>
-@endsection('page')
+@endsection
+@section('script')
+<script type="text/javascript" src="{!! asset('js/plupload.full.min.js') !!}"></script>
+<script type="text/javascript">
+//for attachment upload
+var uploader = new plupload.Uploader({
+	runtimes : 'html5,flash,silverlight,html4',
+
+browse_button : 'import', // you can pass in id...
+container: document.getElementById('container'), // ... or DOM Element itself
+
+url : "{{ asset('plupload/upload.php') }}",
+
+filters : {
+	max_file_size : '10mb',
+	mime_types: [
+	{title : "Image files", extensions : "jpg,gif,png,xlsx"},
+	{title : "Zip files", extensions : "zip"}
+	]
+},
+
+// Flash settings
+flash_swf_url : "{{ asset('plupload/Moxie.swf') }}",
+
+// Silverlight settings
+silverlight_xap_url : "{{ asset('plupload/Moxie.xap') }}",
+
+
+init: {
+	PostInit: function() {
+//document.getElementById('filelist').innerHTML = '';
+},
+
+FilesAdded: function(up, files) {
+
+	uploader.start();
+},
+
+// UploadProgress: function(up, file) {
+// document.getElementById(file.id).getElementsByTagName('b')[0].innerHTML = '<span>' + file.percent + "%</span>";
+// },
+UploadFile: function(up, file){
+	var tmp_url = '{!! asset('/tmp/') !!}';
+
+	$('#file').val(file.name);
+	console.log(file.name);
+	alert(file.name);
+	$.ajax({
+		url:"{!! route('blogs.import') !!}",
+		type: "POST",
+		data : {'file': file.name , 
+		"_token": "{!! csrf_token() !!}",
+	},
+	success:function(response) {
+		console.log(response);
+	},
+	error: function(data) {
+		console.log(data);
+	}
+});
+
+
+/*$('#preview').val(file.name);
+$('#previewDiv >img').remove();
+$('#previewDiv').append("<img src='"+tmp_url +"/"+ file.name+"' id='preview' height='100px' width='100px'/>");*/
+
+},
+UploadComplete: function(up, files){
+
+	var tmp_url = '{!! asset('/tmp/') !!}';
+	plupload.each(files, function(file) {
+		$('#image').val(file.name);
+		$('#previewDiv > img').remove();
+		$('#previewDiv').append("<img src='"+"/tmp/"+ file.name+"' id='preview' height='100px' width='100px'/>");
+	});
+	jQuery('.loader').fadeToggle('medium');
+},
+
+Error: function(up, err) {
+	document.getElementById('console').innerHTML += "\nError #" + err.code + ": " + err.message;
+}
+}
+});
+
+uploader.init();
+</script>
+@endsection
