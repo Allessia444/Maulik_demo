@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 
-class Industrys extends Model
+class Industry extends Model
 {
     protected $table="industrys";
     protected $fillable = ['name','slug'];
@@ -23,6 +23,6 @@ class Industrys extends Model
     }
 
     public function clients(){
-        return $this->hasMany('App\Clients','industry_id');
+        return $this->hasMany('App\Client','industry_id');
     }
 }

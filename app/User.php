@@ -23,7 +23,7 @@ class User extends Authenticatable
         return $this->hasone('App\UserProfile','user_id');
     }
     public function projects(){
-        return $this->hasMany('App\Projects','user_id');
+        return $this->hasMany('App\Project','user_id');
 
     }
 

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Projects;
+use App\Project;
 use App\User;
 use Validator;
 use Former;
@@ -14,7 +14,7 @@ class ProjectsController extends Controller
    //List all projects
     public function index()
     {
-        $projects=Projects::all();
+        $projects=Project::all();
         return view('admin.projects.index',compact('projects'));
     }
     //Create the new project
@@ -44,7 +44,7 @@ class ProjectsController extends Controller
         // If no error than go inside otherwise go to the catch section
         try
         {   
-            $projects = New Projects;
+            $projects = New Project;
             $projects->user_id = $request->get('user_id');
             $projects->name = $request->get('name');
             $projects->confirm_hrs = $request->get('confirm_hrs');
@@ -62,13 +62,13 @@ class ProjectsController extends Controller
     //Show perticular project details
     public function show($id)
     {
-        $projects=Projects::find($id);
+        $projects=Project::find($id);
         return view('admin.projects.show',compact('projects'));
     }
     //Edit the project
     public function edit($id)
     {
-        $projects=Projects::find($id);
+        $projects=Project::find($id);
         Former::populate($projects);
         $users=User::where('role','=','user')->get()->pluck('first_name','id');
         return view('admin.projects.edit',compact('projects','users'));
@@ -94,7 +94,7 @@ class ProjectsController extends Controller
         // If no error than go inside otherwise go to the catch section
         try
         {   
-            $projects = Projects::find($id);
+            $projects = Project::find($id);
             $projects->user_id = $request->get('user_id');
             $projects->name = $request->get('name');
             $projects->slug="";
@@ -112,7 +112,7 @@ class ProjectsController extends Controller
     //Delete the project
     public function destroy($id)
     {
-        $projects = Projects::find($id);
+        $projects = Project::find($id);
         $projects->delete();
         return redirect()->route('projects.index');
     }

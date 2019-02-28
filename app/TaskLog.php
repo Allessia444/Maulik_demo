@@ -15,7 +15,7 @@ class TaskLog extends Model
     }
 
     public function tasks(){
-        return $this->belongsTo('App\Tasks','task_id');
+        return $this->belongsTo('App\Task','task_id');
     }
 
     public function getDateAttribute($value)

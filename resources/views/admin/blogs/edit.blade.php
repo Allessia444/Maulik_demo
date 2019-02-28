@@ -52,8 +52,11 @@
 </div>
 @endsection
 @section('script')
+<script src="{!! asset('unisharp/laravel-ckeditor/ckeditor.js') !!}"></script>
+<script src="{!! asset('unisharp/laravel-ckeditor/adapters/jquery.js') !!}"></script>
 <script type="text/javascript" src="{!! asset('js/plupload.full.min.js') !!}"></script>
 <script type="text/javascript">
+$('textarea').ckeditor();
 	var uploader = new plupload.Uploader({
   browse_button: 'browse', // this can be an id of a DOM element or the DOM element itself
   url: "{!! asset('plupload/upload.php') !!}",

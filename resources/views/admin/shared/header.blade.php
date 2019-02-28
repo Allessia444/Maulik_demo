@@ -22,7 +22,7 @@
 					<div class="dropdown-menu dropdown-menu-right">
 						<a class="dropdown-item" href="#"><i class="fa fa-user-md" aria-hidden="true"></i> Profile</a>
 						<a class="dropdown-item" href="#"><i class="fa fa-cog" aria-hidden="true"></i> Setting</a>
-						<a class="dropdown-item" href="#"><i class="fa fa-question" aria-hidden="true"></i> Help</a>
+						<a class="dropdown-item" href="{!! route('site_settings.index') !!}"><i class="fa fa-question" aria-hidden="true"></i> Site Settings</a>
 						
 						<a class="dropdown-item" href="{{ route('logout') }}"
 						   onclick="event.preventDefault();

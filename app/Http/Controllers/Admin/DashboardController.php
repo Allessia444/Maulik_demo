@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
-use App\Clients;
-use App\Projects;
+use App\Client;
+use App\Project;
 use App\Blog;
 use DB;
 use Auth;
@@ -16,8 +16,8 @@ class DashboardController extends Controller
 	public function index(){
 		if(Auth::user()->role == "admin"){
 			$user=User::where('role','=','user')->count();
-			$clients=Clients::count();
-			$projects=Projects::count();
+			$clients=Client::count();
+			$projects=Project::count();
 
 			$users = User::count();
 			$users = User::select(DB::raw("COUNT(*) as count , extract(month from created_at) as month"))

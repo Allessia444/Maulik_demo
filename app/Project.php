@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
-class Projects extends Model
+class Project extends Model
 {
      protected $table="projects";
     protected $fillable = ['user_id','name','slug','confirm_hrs'];

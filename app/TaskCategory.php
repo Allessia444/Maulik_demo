@@ -21,6 +21,6 @@ class TaskCategory extends Model
         ];
     }
     public function tasks(){
-        return $this->hasone('App\Tasks','task_category_id');
+        return $this->hasone('App\Task','task_category_id');
     }
 }

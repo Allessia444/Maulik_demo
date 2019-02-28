@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Tasks extends Model
+class Task extends Model
 {
     protected $table="tasks";
     protected $fillable = ['task_category_id','user_id','name','notes','start_date','end_date','priority'];

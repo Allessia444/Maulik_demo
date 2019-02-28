@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Clients extends Model
+class Client extends Model
 {
     protected $table="clients";
     protected $fillable = ['industry_id','name','logo','website','email','phone','fax','address1','address2','city','state','country','zipcode'];
@@ -37,6 +37,6 @@ class Clients extends Model
     }
 
         public function industrys(){
-        return $this->belongsTo('App\Industrys','industry_id');
+        return $this->belongsTo('App\Industry','industry_id');
     }
 }

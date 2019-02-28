@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Clients;
+use App\Client;
 use App\Industrys;
 use Validator;
 use Former;
@@ -13,7 +13,7 @@ class ClientsController extends Controller
     //List all clients 
     public function index()
     {
-        $clients=Clients::all();
+        $clients=Client::all();
         
         return view('admin.clients.index',compact('clients'));
     }
@@ -51,7 +51,7 @@ class ClientsController extends Controller
         {   
 
 
-            $client = New Clients;
+            $client = New Client;
             $client->industry_id = $request->get('industry_id');
             $client->name = $request->get('name');
             $client->email = $request->get('email');
@@ -80,7 +80,7 @@ class ClientsController extends Controller
     //Client full details show
     public function show($id)
     {
-        $client=Clients::find($id);
+        $client=Client::find($id);
         Former::populate($client);
         $industrys=Industrys::all()->pluck('name','id');
         return view('admin.clients.show',compact('client','industrys'));
@@ -88,7 +88,7 @@ class ClientsController extends Controller
     //Edit the client details
     public function edit($id)
     {
-        $client=Clients::find($id);
+        $client=Client::find($id);
         $industrys=Industrys::all()->pluck('name','id');
         Former::populate($client);
         return view('admin.clients.edit',compact('client','industrys'));
@@ -121,7 +121,7 @@ class ClientsController extends Controller
         {   
 
 
-            $client = Clients::find($id);
+            $client = Client::find($id);
             $client->industry_id = $request->get('industry_id');
             $client->name = $request->get('name');
             $client->email = $request->get('email');
@@ -153,7 +153,7 @@ class ClientsController extends Controller
     //Delete the client
     public function destroy($id)
     {
-        $client = Clients::find($id);
+        $client = Client::find($id);
         $client->delete();
         return redirect()->route('clients.index');
     }

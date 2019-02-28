@@ -18,6 +18,11 @@
 						<span class="fa fa-home"></span><span class="mtext">Colors</span>
 						<span ></span>
 					</a>
+					<ul>
+						<li>
+							<a href="{!! route('dropdown') !!}" title="">dropdown task</a>
+						</li>
+					</ul>
 				</li>
 
 				<li>
@@ -42,13 +47,13 @@
 				<li>
 					<a href="{!! route('industrys.index') !!}" class="dropdown-toggle no-arrow">
 						<span class="fa fa-desktop"></span><span class="mtext">Industrys</span>
-						<span >({!! App\Industrys::count() !!})</span>
+						<span >({!! App\Industry::count() !!})</span>
 					</a>
 				</li>
 				<li>
 					<a href="{!! route('clients.index') !!}" class="dropdown-toggle no-arrow">
 						<span class="fa fa-sitemap"></span><span class="mtext">Clients</span>
-						<span >({!! App\Clients::count() !!})</span>
+						<span >({!! App\Client::count() !!})</span>
 					</a>
 				</li>
 				<li>
@@ -60,7 +65,7 @@
 				<li>
 					<a href="{!! route('projects.index') !!}" class="dropdown-toggle no-arrow">
 						<span class="fa fa-clone"></span><span class="mtext">Projects</span>
-						<span >({!! App\Projects::count() !!})</span>
+						<span >({!! App\Project::count() !!})</span>
 					</a>
 				</li>
 				<li>
@@ -89,7 +94,7 @@
 				<li>
 					<a href="{!! route('tasks.index') !!}" class="dropdown-toggle no-arrow">
 						<span class="fa fa-pencil"></span><span class="mtext">Tasks</span>
-						<span >({!! App\Tasks::count() !!})</span>
+						<span >({!! App\Task::count() !!})</span>
 					</a>
 				</li>
 				<li>

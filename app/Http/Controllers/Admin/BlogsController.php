@@ -190,4 +190,58 @@ class BlogsController extends Controller
     {
          return Excel::download(new BlogsExport, 'blogs.xlsx');
     }
+    //Edit blog using jquery
+    public function edit_blog(Request $request){
+        $id=$request->blog_id;
+        $blogs=Blog::find($id);
+        Former::populate($blogs);
+        $blog_categories=BlogCategory::all()->pluck('name','id');
+        return view('admin.blogs.render_edit_blog',compact('blogs','blog_categories'));
+    }
+    //Update user blog using jquery
+    public function update_blog(Request $request){
+            //Rules for validation
+         $rules=['name' => 'required',
+                 'blog_category_id'=>'required',
+                 'description'=>'required',
+                ];
+        //Message for validation
+        $messages=['name.required' => 'Please enter  name.',
+                    'blog_category_id.required' => 'Please select blog category.',
+                    'description.required'=>'Please enter the description'
+                    ];
+        // Make validator with rules and messages
+        $validator = Validator::make($request->all(),$rules,$messages);
+        // If validator fails than it will redirect back and gives error otherwise go to try catch section
+        if ($validator->fails()) { 
+            Former::withErrors($validator);
+            return response()->json($validator->getMessageBag()->toArray(), 422);
+        }
+        // If no error than go inside otherwise go to the catch section
+        try
+        {  
+            $blog = Blog::find($request->id);
+            $blog->blog_category_id = $request->get('blog_category_id');
+            $blog->name = $request->get('name');
+            if($request->get('photo')){
+                $blog->photo=$request->get('photo');    
+            }
+            $blog->status=$request->get('status');
+            $blog->description=$request->get('description');
+            $blog->user_id=Auth::user()->id;
+            $blog->save();
+            return response()->json(['status'=>200]);
+        }
+        catch(\Exception $e)
+        {
+            return response()->json(["error" => "Something went wrong, Please try after sometime."], 422);
+        }
+
+    }
+    //Get user blogs
+    public function blogs_user()
+    {
+        $blogs=Blog::where('user_id','=',Auth::user()->id)->get();
+        return view('admin.blogs.render_user_blogs',compact('blogs'));   
+    }
 }

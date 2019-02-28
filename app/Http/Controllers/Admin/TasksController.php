@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Tasks;
+use App\Task;
 use Former;
 use Validator;
 use App\TaskCategory;
@@ -16,7 +16,7 @@ class TasksController extends Controller
     //List all tasks
     public function index()
     {
-        $tasks=Tasks::where('completed','=',0)->get();
+        $tasks=Task::where('completed','=',0)->get();
         return view('admin.tasks.index',compact('tasks'));
     }
 
@@ -54,7 +54,7 @@ class TasksController extends Controller
         // If no error than go inside otherwise go to the catch section
         try
         {   
-            $tasks = New Tasks;
+            $tasks = New Task;
             $tasks->task_category_id = $request->get('task_category_id');
             $tasks->user_id =Auth::user()->id;
             $tasks->name = $request->get('name');
@@ -73,14 +73,14 @@ class TasksController extends Controller
     //Show the task details
     public function show($id)
     {
-        $task=Tasks::find($id);
+        $task=Task::find($id);
         return view('admin.tasks.show',compact('task'));
     }
 
     //Edit the task detail
     public function edit($id)
     {
-        $tasks=Tasks::find($id);
+        $tasks=Task::find($id);
         $task_categories=TaskCategory::all()->pluck('name','id');
         $users=User::where('role','=','user')->get()->pluck('first_name','id');
         Former::populate($users);
@@ -114,7 +114,7 @@ class TasksController extends Controller
         // If no error than go inside otherwise go to the catch section
         try
         {   
-            $tasks = Tasks::find($id);
+            $tasks = Task::find($id);
             $tasks->task_category_id = $request->get('task_category_id');
             $tasks->user_id = Auth::user()->id;
             $tasks->name = $request->get('name');
@@ -134,7 +134,7 @@ class TasksController extends Controller
     //Delete the task
     public function destroy($id)
     {
-        $tasks=Tasks::find($id);
+        $tasks=Task::find($id);
         $tasks->delete();
         return redirect()->route('tasks.index');
     }
@@ -142,7 +142,7 @@ class TasksController extends Controller
     public function completed(Request $request){
         $task_id=$request->get('task_id');
         try{
-            $completed=Tasks::find($task_id);
+            $completed=Task::find($task_id);
             $completed->completed=1;
             $completed->save();
             return response()->json([
@@ -152,5 +152,24 @@ class TasksController extends Controller
         catch(\Exception $e){
             return response()->json(['status'=>422]);
         }      
+    }
+    //Dropdown show task
+    public function dropdown(){
+        $tasks=TaskCategory::all();
+        Former::populate($tasks);
+        return view('admin.colors.dropdown_task',compact('tasks'));
+    }
+    //Task details
+    public function details($id){
+        $task=Task::where('task_category_id','=',$id)->get();
+        // return response()->json(['name'=>$task->name,'id'=>$task->id],200);
+        return view('admin.colors.task',compact('task'));
+    }
+
+    public function taskdetails($id){
+        
+        $task=Task::find($id);
+        return response()->json(['name'=>$task->name,'id'=>$task->id],200);
+        // return view('admin.colors.task',compact('task'));
     }
 }

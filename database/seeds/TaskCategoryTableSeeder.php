@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
-class User_profileTableSeeder extends Seeder
+use App\TaskCategory;
+class TaskCategoryTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,8 @@ class User_profileTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        TaskCategory::insert([
+        	'name'=>'taskcategory1'
+        	]);
     }
 }

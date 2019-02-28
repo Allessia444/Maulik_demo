@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Department;
-class department_table_seeder extends Seeder
+use App\Project;
+class ProjectTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,9 +11,9 @@ class department_table_seeder extends Seeder
      */
     public function run()
     {
-         Department::insert([
-        	['name'=>'developer'],
-            ['name'=>'tester'],
+        Project::insert([
+        	'user_id'=>1,
+        	'name'=>'project1'
         	]);
     }
 }

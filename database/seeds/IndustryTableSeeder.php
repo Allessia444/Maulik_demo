@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Industrys;
-class IndustrySeeder extends Seeder
+use App\Industry;
+class IndustryTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,7 +11,7 @@ class IndustrySeeder extends Seeder
      */
     public function run()
     {
-        Industrys::insert([
+        Industry::insert([
         	['name'=>'automobiles'],
             ['name'=>'power'],
         	]);

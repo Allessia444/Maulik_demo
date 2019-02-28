@@ -1,10 +1,3 @@
-
-
-<script type="text/javascript">
-	
-</script>
-
-
 @extends('admin.shared.master')
 @section('title','Colors')
 @section('page')
@@ -57,8 +50,10 @@
 			setTimeout(function(){
 			            $('div p:last').remove();
 			            $('div p').css('background-color','white');
+			            location.reload();
 			            //....and whatever else you need to do
 			    }, 3000);
+
 		});
 	</script>
 	@endsection

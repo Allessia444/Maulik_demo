@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Industrys;
+use App\Industry;
 use Validator;
 use Former;
 class IndustrysController extends Controller
@@ -12,7 +12,7 @@ class IndustrysController extends Controller
    //List all industrys
     public function index()
     {
-        $industrys = Industrys::all();
+        $industrys = Industry::all();
         return view('admin.industrys.index',compact('industrys'));
     }
     //Create the new industry
@@ -37,7 +37,7 @@ class IndustrysController extends Controller
         // If no error than go inside otherwise go to the catch section
         try
         {   
-            $industrys = New Industrys;
+            $industrys = New Industry;
             $industrys->name = $request->get('name');
            
             $industrys->save();
@@ -56,7 +56,7 @@ class IndustrysController extends Controller
     //Edit the industrys
     public function edit($id)
     {
-        $industrys=Industrys::find($id);
+        $industrys=Industry::find($id);
         Former::populate($industrys);
         return view('admin.industrys.edit',compact('industrys'));
     }
@@ -77,7 +77,7 @@ class IndustrysController extends Controller
         // If no error than go inside otherwise go to the catch section
         try
         {   
-            $industrys = Industrys::find($id);
+            $industrys = Industry::find($id);
             $industrys->name = $request->get('name');
             $industrys->slug="";
             $industrys->save();
@@ -91,7 +91,7 @@ class IndustrysController extends Controller
     //Delete the industry
     public function destroy($id)
     {
-        $industrys=Industrys::find($id);
+        $industrys=Industry::find($id);
         $industrys->delete();
         return redirect()->route('industrys.index');
     }

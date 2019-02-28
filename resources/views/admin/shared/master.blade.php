@@ -3,7 +3,7 @@
 <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>	
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<title>  @yield('title') </title>
+	<title>@if(App\SiteSetting::count() > 0) {!! App\SiteSetting::first()->title  !!}@else Project  @endif |  @yield('title') </title>
 	<!-- Google Font -->
 	<link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,600,700" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">

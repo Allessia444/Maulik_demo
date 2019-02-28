@@ -16,14 +16,9 @@ class UserTableSeeder extends Seeder
             'last_name'=>'khatri',
         	'email'=>'mk@gmail.com',
         	'password'=>bcrypt('1234'),
-        	'contact'=>'12345868',
+        	'phone'=>'12345868',
         	'role'=>'admin'],
-            ['first_name'=>'rutul',
-            'last_name'=>'thakkar',
-            'email'=>'rutul@gmail.com',
-            'password'=>bcrypt('1234'),
-            'contact'=>'12345868',
-            'role'=>'user']
+            
         	]);
     }
 }

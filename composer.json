@@ -19,6 +19,7 @@
         "laravelcollective/html": "^5.2.0",
         "maatwebsite/excel": "^3.1",
         "nesbot/carbon": "1.26.3",
+        "phpoffice/phpspreadsheet": "^1.6",
         "spatie/laravel-sluggable": "^2.1",
         "unisharp/laravel-ckeditor": "^4.7"
     },

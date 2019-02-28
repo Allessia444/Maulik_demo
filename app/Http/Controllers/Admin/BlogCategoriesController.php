@@ -49,7 +49,6 @@ class BlogCategoriesController extends Controller
             $blog_categories = New BlogCategory;
             $blog_categories->parent_id = $request->get('parent_id');
             $blog_categories->name = $request->get('name');
-
            
             $blog_categories->save();
             return redirect()->route('blogcategories.index')->withSuccess("Insert record successfully.");

@@ -43,6 +43,12 @@ Route::group(['middleware'=>['authen'],'prefix'=>'admin','namespace'=>'Admin'],f
 	Route::resource('/blogs','BlogsController');
 	//Show blogs for users
 	Route::get('/blogs/user-blog-details/{id}','BlogsController@user_blog_details')->name('blogs.user_blog_details');
+	//Get user blogs jquery
+	Route::get('/blogs/users/user-blogs/','BlogsController@blogs_user')->name('blogs-user');
+	//Edit blog using jquery 
+	Route::get('/blogs/edit/user-blog-details/','BlogsController@edit_blog')->name('edit-blog');
+	//Update blog using jquery 
+	Route::post('/blogs/edit/user-blog-details/','BlogsController@update_blog')->name('update-blog');
 	//Import the blog data
 	Route::post('/blog-import','BlogsController@import')->name('blogs.import');
 	//Export blog data
@@ -53,9 +59,17 @@ Route::group(['middleware'=>['authen'],'prefix'=>'admin','namespace'=>'Admin'],f
 	Route::resource('/tasks','TasksController');
 	//Task completed
 	Route::post('/tasks/completed','TasksController@completed')->name('tasks.completed');
+	//Task dropdown
+	Route::get('/jquery','TasksController@dropdown')->name('dropdown');
+	
+	//Get task view-details
+	Route::get('/jquery/{id}','TasksController@details')->name('get-task-details');
+	//
+	Route::get('/task-jquery/{id}','TasksController@taskdetails')->name('get-task');
 	//Task logs update show 
 	Route::resource('/tasks.task_logs','TaskLogsController');
-
+	//Site setting update
+	Route::resource('/site_settings','SiteSettingsController');
 
 });
 	//Show all blogs viewed by guest user
