@@ -186,6 +186,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Former\FormerServiceProvider::class
         Unisharp\Ckeditor\ServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
     ],
 
     /*
@@ -237,6 +238,8 @@ return [
         'Former' => 'Former\Facades\Former',
         'Image' => Intervention\Image\Facades\Image::class,
         'Input' => Illuminate\Support\Facades\Input::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+
     ],
 
 ];
